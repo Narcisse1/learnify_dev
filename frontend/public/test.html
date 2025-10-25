@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    h1 { color: #3b82f6; }
+    .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+    .success { background: #d1fae5; color: #065f46; }
+    .error { background: #fee2e2; color: #991b1b; }
+    pre { background: #f3f4f6; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    button { background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+    button:hover { background: #2563eb; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Learnify API Test</h1>
+  
+  <div id="status"></div>
+  
+  <h2>Tests:</h2>
+  <button onclick="testBackend()">Test Backend API</button>
+  <button onclick="testFrontend()">Test Frontend</button>
+  <button onclick="testDummyData()">Test Dummy Data</button>
+  
+  <h2>Results:</h2>
+  <div id="results"></div>
+
+  <script>
+    const statusDiv = document.getElementById('status')
+    const resultsDiv = document.getElementById('results')
+
+    function showStatus(message, isSuccess) {
+      statusDiv.innerHTML = `<div class="status ${isSuccess ? 'success' : 'error'}">${message}</div>`
+    }
+
+    function showResults(title, data) {
+      resultsDiv.innerHTML += `<h3>${title}</h3><pre>${JSON.stringify(data, null, 2)}</pre>`
+    }
+
+    async function testBackend() {
+      resultsDiv.innerHTML = ''
+      showStatus('Testing backend API...', true)
+      
+      try {
+        const response = await fetch('http://localhost:5000/api/courses', {
+          headers: {
+            'Authorization': 'Bearer test-api-key-12345',
+            'Content-Type': 'application/json'
+          }
+        })
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
+        
+        const data = await response.json()
+        showStatus(`✅ Backend API Working! Found ${data.length} courses`, true)
+        showResults('API Response (first 3 courses)', data.slice(0, 3))
+      } catch (error) {
+        showStatus(`❌ Backend API Failed: ${error.message}`, false)
+        showResults('Error Details', { error: error.message, stack: error.stack })
+      }
+    }
+
+    async function testFrontend() {
+      resultsDiv.innerHTML = ''
+      showStatus('Testing frontend...', true)
+      
+      try {
+        const response = await fetch('/')
+        if (response.ok) {
+          showStatus('✅ Frontend is running!', true)
+          showResults('Frontend Status', { 
+            status: response.status, 
+            statusText: response.statusText,
+            url: response.url
+          })
+        } else {
+          throw new Error(`HTTP ${response.status}`)
+        }
+      } catch (error) {
+        showStatus(`❌ Frontend Failed: ${error.message}`, false)
+      }
+    }
+
+    async function testDummyData() {
+      resultsDiv.innerHTML = ''
+      showStatus('Checking dummy data availability...', true)
+      
+      // This would need to import the actual dummy data
+      // For now, just show that the test exists
+      showStatus('ℹ️ Dummy data test requires React app context', true)
+      showResults('Info', {
+        message: 'Dummy data is available as fallback in the React app',
+        location: 'src/dummydata/courses.ts',
+        courses: 'Should have 50 courses'
+      })
+    }
+
+    // Auto-run backend test on load
+    window.addEventListener('load', () => {
+      setTimeout(testBackend, 500)
+    })
+  </script>
+</body>
+</html>

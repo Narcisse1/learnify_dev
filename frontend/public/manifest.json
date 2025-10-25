@@ -1,0 +1,29 @@
+{
+  "name": "Learnify - Learning Platform",
+  "short_name": "Learnify",
+  "description": "A modern learning management system for online courses",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Browse Courses",
+      "short_name": "Courses",
+      "description": "View all available courses",
+      "url": "/",
+      "icons": []
+    }
+  ]
+}

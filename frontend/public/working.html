@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Working Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { font-size: 2.5em; margin-bottom: 20px; }
+        .status { font-size: 1.2em; margin: 10px 0; }
+        .success { color: #4ade80; }
+        .info { color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Vite Server Test</h1>
+        <div class="status success">✅ Server is running on port 5173</div>
+        <div class="status success">✅ Static files are being served</div>
+        <div class="status success">✅ HTML is rendering correctly</div>
+        
+        <hr style="margin: 30px 0; border: 1px solid rgba(255,255,255,0.3);">
+        
+        <div class="status info">📍 Current URL: <span id="url"></span></div>
+        <div class="status info">⏰ Loaded at: <span id="time"></span></div>
+        
+        <hr style="margin: 30px 0; border: 1px solid rgba(255,255,255,0.3);">
+        
+        <p><strong>Next Step:</strong> If you see this page, the Vite server is working correctly.</p>
+        <p>The issue might be with the React app itself.</p>
+        
+        <div style="margin-top: 30px;">
+            <a href="/" style="color: #fbbf24; text-decoration: none; font-weight: bold;">
+                ← Back to Main App
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('url').textContent = window.location.href;
+        document.getElementById('time').textContent = new Date().toLocaleTimeString();
+        
+        console.log('✅ Static HTML page loaded successfully');
+        console.log('Server is working on:', window.location.origin);
+    </script>
+</body>
+</html>
