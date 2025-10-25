@@ -42,8 +42,8 @@ A full-stack learning management system built with React, Redux, TypeScript, and
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd learnify_app-dev
+git clone https://github.com/Narcisse1/learnify_dev.git
+cd learnify_dev
 ```
 
 2. **Setup Backend**
@@ -68,7 +68,7 @@ Navigate to `http://localhost:5173`
 ## 📁 Project Structure
 
 ```
-learnify_app-dev/
+learnify_dev/
 ├── backend/                 # Flask backend
 │   ├── src/
 │   │   ├── api/            # API routes and middleware
