@@ -287,7 +287,7 @@ This project is licensed under the MIT License.
 
 ## 👥 Authors
 
-Built with ❤️ for learners everywhere.
+Built with ❤️ by Narcisse Ndongkain for the test.
 
 ## 🙏 Acknowledgments
 
@@ -304,5 +304,3 @@ For issues and questions:
 - Check browser console for errors
 
 ---
-
-**Happy Learning! 🎓**
